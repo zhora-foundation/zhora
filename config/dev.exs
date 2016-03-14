@@ -34,9 +34,9 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :zhora, Zhora.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "zhora_dev",
-  hostname: "localhost",
+  adapter: RethinkDB.Ecto,
+  host: "localhost",
+  port: 28015,
+  # auth_key: nil,
+  db: "zhora_dev",
   pool_size: 10

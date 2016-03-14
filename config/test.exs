@@ -11,9 +11,9 @@ config :logger, level: :warn
 
 # Configure your database
 config :zhora, Zhora.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "zhora_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  adapter: RethinkDB.Ecto,
+  host: "localhost",
+  port: 28015,
+  # auth_key: nil,
+  db: "zhora_test",
+  pool_size: 10

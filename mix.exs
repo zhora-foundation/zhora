@@ -3,7 +3,7 @@ defmodule Zhora.Mixfile do
 
   def project do
     [app: :zhora,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -19,7 +19,7 @@ defmodule Zhora.Mixfile do
   def application do
     [mod: {Zhora, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :rethinkdb_ecto]]
   end
 
   # Specifies which paths to compile per environment.
@@ -31,12 +31,12 @@ defmodule Zhora.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.1.4"},
-     {:postgrex, ">= 0.0.0"},
      {:phoenix_ecto, "~> 2.0"},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:rethinkdb_ecto, github: "almightycouch/rethinkdb_ecto"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
