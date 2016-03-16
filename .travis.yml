@@ -10,3 +10,4 @@ before_install:
   - sudo apt-get install rethinkdb -y
 before_script:
   - rethinkdb --daemon
+  - mix ecto.migrate
