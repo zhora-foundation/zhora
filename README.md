@@ -1,4 +1,4 @@
-# Zhora
+# Zhora [![Build Status](https://travis-ci.org/zhora-foundation/zhora.svg?branch=master)](https://travis-ci.org/zhora-foundation/zhora)
 
 To start your Phoenix app:
 
