@@ -14,8 +14,6 @@ defmodule Zhora.Endpoint do
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
-    socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
-    plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
   end
 
@@ -29,11 +27,6 @@ defmodule Zhora.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
-
-  plug Plug.Session,
-    store: :cookie,
-    key: "_zhora_key",
-    signing_salt: "E1tlqUXh"
 
   plug Zhora.Router
 end

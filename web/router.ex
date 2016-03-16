@@ -1,26 +1,23 @@
 defmodule Zhora.Router do
   use Zhora.Web, :router
 
-  pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
-  end
-
-  pipeline :api do
+  pipeline :agent_api do
     plug :accepts, ["json"]
   end
 
-  scope "/", Zhora do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
+  pipeline :agent_api_secured do
+    plug Zhora.AuthKeyPlug
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Zhora do
-  #   pipe_through :api
-  # end
+  scope "/v1", Zhora.V1 do
+    pipe_through :agent_api
+
+    post "/ping", PingController, :create
+
+    scope "/" do
+      pipe_through :agent_api_secured
+
+      post "/notices", NoticesController, :create
+    end
+  end
 end

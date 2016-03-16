@@ -31,12 +31,12 @@ defmodule Zhora.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.1.4"},
-     {:phoenix_ecto, "~> 2.0"},
+     {:phoenix_ecto, "~> 3.0.0-beta.2"},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:rethinkdb_ecto, github: "almightycouch/rethinkdb_ecto"}]
+     {:rethinkdb_ecto, github: "zhora-foundation/rethinkdb_ecto"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
