@@ -6,12 +6,12 @@ defmodule Zhora.AuthKeyPlug do
   end
 
   def call(conn, opts) do
-    api_key = case get_req_header(conn, "x-api-key") do
+    project = case get_req_header(conn, "x-api-key") do
       []    -> nil
-      [key] -> Zhora.Repo.get_by(Zhora.ApiKey, key: key)
+      [key] -> Zhora.Repo.get_by(Zhora.Project, api_key: key)
     end
 
-    case api_key do
+    case project do
       nil  -> render_error(conn, opts)
       _key -> conn
     end

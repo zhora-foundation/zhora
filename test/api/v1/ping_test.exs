@@ -1,20 +1,20 @@
 defmodule Zhora.ApiV1PingTest do
   use Zhora.ConnCase
 
-  alias Zhora.User
-  alias Zhora.ApiKey
+  # alias Zhora.User
+  # alias Zhora.ApiKey
+  alias Zhora.Project
   alias Zhora.TestHelpers
 
-  @affected_repos [ApiKey, User]
+  @affected_models [Project]
 
   setup_all do
-    TestHelpers.clean_repos(@affected_repos)
+    TestHelpers.clean_repos(@affected_models)
 
-    {:ok, user} = Repo.insert(%User{email: "def@test.com", name: "John Doe"})
-    {:ok, _api_key} = Repo.insert(%ApiKey{key: "validkey", user_id: user.id})
+    {:ok, _project} = Repo.insert(%Project{name: "test", api_key: "validkey"})
 
     on_exit fn ->
-      TestHelpers.clean_repos(@affected_repos)
+      TestHelpers.clean_repos(@affected_models)
     end
   end
 
@@ -32,7 +32,7 @@ defmodule Zhora.ApiV1PingTest do
             config: %{api_key: "validkey"}})
 
     assert json_response(conn, 200) ==
-      %{"features" => 
+      %{"features" =>
         %{"notices" => true,
           "local_variables" => true,
           "metrics" => true,
@@ -48,7 +48,7 @@ defmodule Zhora.ApiV1PingTest do
       |> post("/v1/ping")
 
     assert json_response(conn, 200) ==
-      %{"features" => 
+      %{"features" =>
         %{"notices" => true,
           "local_variables" => true,
           "metrics" => true,
