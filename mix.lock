@@ -14,4 +14,4 @@
   "poolboy": {:hex, :poolboy, "1.5.1"},
   "ranch": {:hex, :ranch, "1.2.1"},
   "rethinkdb": {:git, "https://github.com/hamiltop/rethinkdb-elixir.git", "6e0192683ba67e45d7b203046254fd76d39f7cfc", []},
-  "rethinkdb_ecto": {:git, "https://github.com/zhora-foundation/rethinkdb_ecto.git", "dee4fdfb78b9cd6f369176d06f511a164b0710b1", []}}
+  "rethinkdb_ecto": {:git, "https://github.com/zhora-foundation/rethinkdb_ecto.git", "ea935784a4cf61554cd86d7aba4b7b461e0db0e6", []}}
