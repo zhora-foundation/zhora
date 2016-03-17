@@ -18,6 +18,7 @@ defmodule Zhora.Router do
       pipe_through :agent_api_secured
 
       post "/notices", NoticesController, :create
+      post "/deploys", DeploysController, :create
     end
   end
 end

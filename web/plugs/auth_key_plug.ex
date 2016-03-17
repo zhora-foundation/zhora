@@ -15,8 +15,12 @@ defmodule Zhora.AuthKeyPlug do
 
     case project do
       nil  -> render_error(conn, opts)
-      _key -> conn
+      _key -> assign(conn, project)
     end
+  end
+
+  defp assign(conn, project) do
+     %{conn | assigns: Map.put(conn.assigns, :project, project)}
   end
 
   defp render_error(conn, {status, json}) do

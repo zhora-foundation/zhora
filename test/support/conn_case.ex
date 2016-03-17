@@ -34,12 +34,14 @@ defmodule Zhora.ConnCase do
     end
   end
 
-  setup _tags do
-    # unless tags[:async] do
-    #   Ecto.Adapters.SQL.restart_test_transaction(Zhora.Repo, [])
-    # end
+  alias Zhora.{Project, Deploy, TestHelpers}
 
-    {:ok, conn: Phoenix.ConnTest.conn()}
+  setup_all _opts do
+    TestHelpers.clean_repos([Project, Deploy])
+  end
+
+  setup _opts do
+    {:ok, conn: Phoenix.ConnTest.conn}
   end
 
   def deflate_json(object) do
