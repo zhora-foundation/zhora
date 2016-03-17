@@ -26,7 +26,7 @@ defmodule Zhora.Deflate do
     :zlib.inflateEnd(zlib)
 
     case Poison.decode(encoded) do
-      {:ok, json} -> %{conn | body_params: json}
+      {:ok, json} -> %{conn | params: json}
       _ -> conn
     end
   end
