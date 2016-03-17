@@ -1,18 +1,11 @@
 defmodule Zhora.ApiV1PingTest do
   use Zhora.ConnCase
 
-  alias Zhora.{Project, TestHelpers}
-
-  @affected_models [Project]
+  alias Zhora.Project
 
   setup_all do
-    TestHelpers.clean_repos(@affected_models)
-
     {:ok, _project} = Repo.insert(%Project{name: "test", api_key: "validkey"})
-
-    on_exit fn ->
-      TestHelpers.clean_repos(@affected_models)
-    end
+    :ok
   end
 
   test "POST /v1/ping with compressed data", %{conn: conn} do
