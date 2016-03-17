@@ -1,6 +1,8 @@
 defmodule Zhora.AuthKeyPlug do
   import Plug.Conn
 
+  alias Zhora.{Repo, Project}
+
   def init(opts) do
     opts[:error] || {403, %{error: "Invalid API key"}}
   end
@@ -8,7 +10,7 @@ defmodule Zhora.AuthKeyPlug do
   def call(conn, opts) do
     project = case get_req_header(conn, "x-api-key") do
       []    -> nil
-      [key] -> Zhora.Repo.get_by(Zhora.Project, api_key: key)
+      [key] -> Repo.get_by(Project, api_key: key)
     end
 
     case project do

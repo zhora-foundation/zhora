@@ -27,6 +27,8 @@ defmodule Zhora.ConnCase do
 
       import Zhora.Router.Helpers
 
+      import Zhora.ConnCase, only: [deflate_json: 1]
+
       # The default endpoint for testing
       @endpoint Zhora.Endpoint
     end
@@ -38,5 +40,20 @@ defmodule Zhora.ConnCase do
     # end
 
     {:ok, conn: Phoenix.ConnTest.conn()}
+  end
+
+  def deflate_json(object) do
+    object
+    |> Poison.encode!
+    |> deflate
+    |> :erlang.list_to_binary
+  end
+
+  defp deflate(content) do
+    zlib = :zlib.open
+    :zlib.deflateInit(zlib)
+    data = :zlib.deflate(zlib, content, :finish)
+    :zlib.deflateEnd(zlib)
+    data
   end
 end
