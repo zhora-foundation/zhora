@@ -1,22 +1,22 @@
-defmodule Zhora.Project do
+defmodule Zhora.Metric do
   use Zhora.Web, :model
 
-  alias Zhora.{Deploy, Metric}
+  alias Zhora.Project
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  schema "projects" do
-    has_many :deploys, Deploy
-    has_many :metrics, Metric
+  schema "metrics" do
+    belongs_to :project, Project
 
-    field :name, :string
-    field :api_key, :string
+    field :metrics, {:array, :string}
+    field :environment, :string
+    field :hostname, :string
 
     timestamps
   end
 
-  @required_fields ~w(name api_key)
+  @required_fields ~w(project_id metrics environment hostname)
   @optional_fields ~w()
 
   @doc """
