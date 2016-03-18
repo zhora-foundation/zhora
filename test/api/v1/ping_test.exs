@@ -21,7 +21,7 @@ defmodule Zhora.ApiV1PingTest do
       |> put_req_header("accept", "application/json")
       |> put_req_header("content-type", "application/json")
       |> put_req_header("content-encoding", "deflate")
-      |> post("/v1/ping", json |> deflate_json)
+      |> post("/v1/ping", deflate_json(json))
 
     assert json_response(conn, 200) ==
       %{"features" =>
