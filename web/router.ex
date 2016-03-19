@@ -19,6 +19,7 @@ defmodule Zhora.Router do
 
       post "/notices", NoticesController, :create
       post "/deploys", DeploysController, :create
+      post "/metrics", MetricsController, :create
     end
   end
 end
