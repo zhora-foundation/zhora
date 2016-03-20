@@ -9,7 +9,7 @@ defmodule Zhora.Metric do
   schema "metrics" do
     belongs_to :project, Project
 
-    field :metrics, {:array, :string}
+    field :metrics, :map
     field :environment, :string
     field :hostname, :string
 
@@ -28,5 +28,23 @@ defmodule Zhora.Metric do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def parse(metrics) do
+    List.foldl(metrics, %{}, fn metric, acc ->
+      [key, value] = String.split(metric)
+      {float, _} = Float.parse(value)
+
+      case String.split(key, ":", parts: 2) do
+        [name] ->
+          count = Map.get(acc, name, %{})
+          count = Map.put(count, "count", float)
+          Map.put(acc, name, count)
+        [name, key] ->
+          values = Map.get(acc, name, %{})
+          values = Map.put(values, key, float)
+          Map.put(acc, name, values)
+      end
+    end)
   end
 end
