@@ -83,4 +83,12 @@ defmodule Zhora.MetricTest do
 
     assert result == expected
   end
+
+  test "parser with malformed values" do
+    assert Metric.parse(["users test"]) == {:error, "malformed value"}
+  end
+
+  test "parser with malformed keys" do
+    assert Metric.parse(["test"]) == {:error, "malformed metric"}
+  end
 end
