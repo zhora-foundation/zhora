@@ -1,10 +1,9 @@
 defmodule Zhora.ApiV1MetricsTest do
   use Zhora.ConnCase
-
-  alias Zhora.{Project, Metric}
+  alias Zhora.{Metric, DataFactory}
 
   setup do
-    project = Repo.insert!(%Project{name: "test", api_key: "validkey"})
+    project = DataFactory.create(:project)
 
     on_exit fn ->
       Repo.delete(project)

@@ -1,10 +1,10 @@
 defmodule Zhora.ApiV1PingTest do
   use Zhora.ConnCase
-
-  alias Zhora.Project
+  alias Zhora.DataFactory
 
   setup_all do
-    {:ok, _project} = Repo.insert(%Project{name: "test", api_key: "validkey"})
+    DataFactory.create(:project)
+
     :ok
   end
 

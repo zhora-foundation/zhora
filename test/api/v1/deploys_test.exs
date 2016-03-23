@@ -1,9 +1,9 @@
 defmodule Zhora.ApiV1DeploysTest do
   use Zhora.ConnCase
-  alias Zhora.{Project, Deploy}
+  alias Zhora.{Deploy, DataFactory}
 
   setup do
-    project = Repo.insert!(%Project{name: "test", api_key: "validkey"})
+    project = DataFactory.create(:project)
 
     on_exit fn ->
       Repo.delete(project)
