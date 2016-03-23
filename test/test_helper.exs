@@ -1,2 +1,2 @@
-Mix.Task.run "ecto.create", ~w(-r Zhora.Repo --quiet)
+Mix.Task.run("ecto.setup", ~w(-r Zhora.Repo --quiet))
 ExUnit.start
