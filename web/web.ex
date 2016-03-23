@@ -30,6 +30,21 @@ defmodule Zhora.Web do
     end
   end
 
+  def repo do
+    quote do
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query, only: [from: 1, from: 2]
+
+      import RethinkDB.Query
+      import RethinkDB.Lambda
+
+      require RethinkDB.Lambda
+
+      alias Zhora.Repo
+    end
+  end
+
   def controller do
     quote do
       use Phoenix.Controller
