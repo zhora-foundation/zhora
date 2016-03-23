@@ -14,7 +14,7 @@ defmodule Zhora.Deploy do
     field :repository, :string
     field :local_username, :string
 
-    timestamps
+    timestamps updated_at: false
   end
 
   @required_fields ~w(project_id environment revision repository local_username)

@@ -13,7 +13,7 @@ defmodule Zhora.Metric do
     field :environment, :string
     field :hostname, :string
 
-    timestamps
+    timestamps updated_at: false
   end
 
   @required_fields ~w(project_id metrics environment hostname)
