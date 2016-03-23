@@ -23,6 +23,10 @@ defmodule Zhora.Web do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
+
+      def table_name do
+        __MODULE__.__struct__.__meta__.source |> elem(1)
+      end
     end
   end
 
