@@ -19,11 +19,15 @@ defmodule Zhora.Mixfile do
   def application do
     [mod: {Zhora, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :rethinkdb_ecto]]
+                    :phoenix_ecto, :rethinkdb_ecto] ++ applications(Mix.env)]
   end
 
+  # Specifies applications to start for selected environment
+  defp applications(:test), do: [:ex_machina]
+  defp applications(_),     do: []
+
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "web", "test/fabrications", "test/support"]
   defp elixirc_paths(_),     do: ["lib", "web"]
 
   # Specifies your project dependencies.
@@ -36,7 +40,8 @@ defmodule Zhora.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:rethinkdb_ecto, github: "zhora-foundation/rethinkdb_ecto"}]
+     {:rethinkdb_ecto, github: "zhora-foundation/rethinkdb_ecto"},
+     {:ex_machina, "~> 0.6.1", only: :test}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
