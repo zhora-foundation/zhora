@@ -41,6 +41,7 @@ defmodule Zhora.Mixfile do
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:rethinkdb_ecto, github: "zhora-foundation/rethinkdb_ecto"},
+     {:guardian, "~> 0.10.1"},
      {:ex_machina, "~> 0.6.1", only: :test}]
   end
 

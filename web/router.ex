@@ -9,6 +9,16 @@ defmodule Zhora.Router do
     plug Zhora.AuthKeyPlug
   end
 
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
+  scope "/v0", Zhora.V0 do
+    pipe_through :api
+
+    resources "/metrics", MetricsController, only: [:index]
+  end
+
   scope "/v1", Zhora.V1 do
     pipe_through :agent_api
 

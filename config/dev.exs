@@ -40,3 +40,6 @@ config :zhora, Zhora.Repo,
   # auth_key: nil,
   db: "zhora_dev",
   pool_size: 10
+
+config :guardian, Guardian,
+  secret_key: "LrRzOf0Tsu/1gUl5fa6UOMa6ly6LWw41hmVk1ZfK+U1MHv0n8O5VOJBnNwfnKNzdRGXAbbvNGdU928X6H7q6Sw=="
