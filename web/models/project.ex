@@ -1,7 +1,6 @@
 defmodule Zhora.Project do
   use Zhora.Web, :model
-
-  alias Zhora.{Deploy, Metric}
+  alias Zhora.{Deploy, Metric, Notice}
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -9,6 +8,7 @@ defmodule Zhora.Project do
   schema "projects" do
     has_many :deploys, Deploy
     has_many :metrics, Metric
+    has_many :notices, Notice
 
     field :name, :string
     field :api_key, :string

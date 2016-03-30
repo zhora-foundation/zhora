@@ -30,6 +30,14 @@ defmodule Zhora.Web do
     end
   end
 
+  def entity do
+    quote do
+      use Ecto.Schema
+
+      import Ecto.Changeset
+    end
+  end
+
   def repo do
     quote do
       import Ecto
