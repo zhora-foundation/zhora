@@ -1,9 +1,7 @@
 defmodule Zhora.Notice.Server do
   use Zhora.Web, :entity
 
-  @primary_key false
-
-  schema "embedded Model" do
+  embedded_schema do
     field :environment_name, :string
     field :hostname, :string
     field :pid, :integer

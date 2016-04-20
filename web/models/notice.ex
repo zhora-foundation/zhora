@@ -30,10 +30,10 @@ defmodule Zhora.Notice do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> cast_embed(:error)
-    |> cast_embed(:notifier)
-    |> cast_embed(:request)
-    |> cast_embed(:server)
+    |> cast_embed(:error, required: true)
+    |> cast_embed(:notifier, required: true)
+    |> cast_embed(:request, required: true)
+    |> cast_embed(:server, required: true)
     |> assoc_constraint(:project)
   end
 end

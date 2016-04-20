@@ -1,9 +1,7 @@
 defmodule Zhora.Notice.Notifier do
   use Zhora.Web, :entity
 
-  @primary_key false
-
-  schema "embedded Model" do
+  embedded_schema do
     field :language, :string
     field :name, :string
     field :url, :string

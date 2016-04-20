@@ -3,10 +3,7 @@ defmodule Zhora.Notice.Error do
 
   alias Zhora.Notice.Backtrace
 
-  @primary_key false
-  @ecto_embedded true
-
-  schema "embedded Model" do
+  embedded_schema do
     embeds_many :backtrace, Backtrace
 
     # field :causes

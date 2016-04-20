@@ -1,9 +1,7 @@
 defmodule Zhora.Notice.Backtrace do
   use Zhora.Web, :entity
 
-  @primary_key false
-
-  schema "embedded Model" do
+  embedded_schema do
     field :file, :string
     field :method, :string
     field :number, :string
